@@ -13,29 +13,42 @@
    ハンバーガーメニュー
    =============================================== -->
   <body>
-    <!-- ログから、メインビジュアル、メッセージ、無料体験、メッセージまで一 -->
+    <!-- ロゴから、メッセージ、無料体験、メッセージまで一 -->
     <!-- fixedでposition指定/absoluteで位置指定 -->
-    <header id="main-area">
+    <header id="header_area">
       <!-- 左上のロゴ -->
-      <img class="log" src="img/logo-w.svg" alt="BBB英会話スクール" />
+      <h1>
+        <img class="logo" src="img/logo-w.svg" alt="BBB英会話スクール" />
+      </h1>
 
-      <!-- ハンバーガーメニュー -->
+      <!-- ハンバーガーめニュー押下時の赤色の画面 -->
+      <nav class ="nav_red">
+        <img
+          class="logo_red"
+          src="img/logo-r.svg"
+          alt="BBB英会話スクール_赤色"
+        />
+        <ul class="nav_links">
+          <li><a href="#">aaaa</a></li>
+          <li><a href="#">bbbb</a></li>
+          <li><a href="#">cccc</a></li>
+        </ul>
+        <a href="#" class="link_red"></a>
+      </nav>
+
+      <!-- ハンバーガーメニュー -- absoluteで位置指定 -->
       <div class="hamburger">
         <span class="hamburger_line"></span>
         <span class="hamburger_line"></span>
         <span class="hamburger_line"></span>
       </div>
-
-      <div class="header_content">
-        <h2 class="learn">楽して学ぼう<br />BBB英会話スクール</h2>
-        <a class="cta_btn">無料体験はこちら</a>
-      </div>
     </header>
-    <main>
-      <!-- ===============================================
+
+    <!-- ===============================================
      メインビジュアル
      =============================================== -->
-      <!-- 時間の経過によって画像が変更 -->
+    <main>
+      <!-- インビジュアル　時間の経過によって画像が変更　同じheaderではなく別枠 -->
       <section class="main_visual">
         <h2>Welcome to BBB English School</h2>
         <p>英語を楽しく学びましょう！</p>

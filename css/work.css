@@ -1,0 +1,41 @@
+/* ┌─────────────────────────────────────────┐
+   │ 共通                        │
+   └─────────────────────────────────────────┘ */
+
+/* 全体の共通ルール */
+body {
+  width: 100%;
+  font-family: "Yu Gothic", sans-serif;
+  margin: 0 auto;
+}
+
+:root {
+  /* ▼ ここで「var(--sidebar-width)」を一括管理！ */
+  --sidebar-width: 15rem;
+}
+.aa {
+  left: var(--sidebar-width);
+}
+
+/* ┌─────────────────────────────────────────┐
+   │ header                        │
+   └─────────────────────────────────────────┘ */
+
+/* ｈｅａｄｅｒ共通クラス */
+#header_area {
+  background-color: #ffffff;
+}
+
+/* 画面聞切り替え（ハンバーガーメニューによって）時  背景  */
+.nav_red {
+  background-color: #ff0000;
+}
+
+/* 画面聞切り替え（ハンバーガーメニューによって）時　ロゴ */
+.log_red {
+  margin-top: 3rem;
+  margin-left: 2rem;
+  width: auto;
+  height: auto;
+  font-size: 3rem;
+}
