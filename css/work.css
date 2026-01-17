@@ -21,12 +21,17 @@ body {
    │ header      画面の切り替え後の赤い画面     │
    └─────────────────────────────────────────┘ */
 
-/* ｈｅａｄｅｒ共通クラス */
+/* header共通クラス ⇀ロゴとハンバーガーメニュー*/
 #header_area {
-  background-color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: transparent; /* 画像の上に透過 */
 }
 
-/* 画面聞切り替え（ハンバーガーメニューによって）時  背景  */
+/* 画面聞切り替え（ハンバーガーメニュー）時  背景赤いページ  */
 .nav_red {
   position: fixed;
   top: 0;
@@ -40,6 +45,14 @@ body {
   transition: opacity 0.3s, visibility 0.3s;
 }
 
+.logo {
+  padding: 1.5rem 0 0rem 0.6rem;
+
+  width: 12rem;
+  margin: 1.5rem 0 0 2rem;
+}
+
+/* 画面聞切り替え（ハンバーガーメニュー）時  背景赤いページ 表示 */
 .nav_red.open {
   opacity: 1;
   visibility: visible;
@@ -84,30 +97,30 @@ body {
   position: fixed;
   top: 1.5rem;
   right: 2rem;
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 10rem;
+  height: 10rem;
   cursor: pointer;
-  z-index: 1000; /* メニューが他の要素より前に表示されるようにする */
-  background-color: white;
+  z-index: 1000;
+  background-color: #ff2a2a;
 }
 
 .bar {
   position: absolute;
   transition: 0.3s;
-  left: 0;
-  height: 0.4rem;
-  width: 100%;
-  background: black;
+  left: 1.5rem;
+  height: 0.6rem;
+  width: 7rem;
+  background: white;
 }
 
 .bar:nth-child(1) {
-  top: 0.8rem;
+  top: 2.5rem;
 }
 .bar:nth-child(2) {
-  top: 2.2rem;
+  top: 4.7rem;
 }
 .bar:nth-child(3) {
-  top: 3.6rem;
+  top: 6.9rem;
 }
 
 /* ┌─────────────────────────────────────────┐
@@ -117,12 +130,131 @@ body {
 /* ハンバーガーメニューがおされたら、「×」にする */
 .hamburger_menu.open .bar:nth-child(1) {
   transform: rotate(45deg);
-  top: 2rem;
+  top: 4.7rem;
 }
 .hamburger_menu.open .bar:nth-child(2) {
   opacity: 0;
 }
 .hamburger_menu.open .bar:nth-child(3) {
   transform: rotate(-45deg);
-  top: 2rem;
+  top: 4.7rem;
+}
+
+/* ┌─────────────────────────────────────────┐
+   │ main      メインビジュアル スライドショー    │
+   └─────────────────────────────────────────┘ */
+
+/* 外枠（コンテナ）の設定 */
+.bg_image {
+  width: calc(100% - 36rem);
+  height: 72rem;
+  margin: 11.5rem 0rem 36rem 36rem;
+  position: relative;
+  overflow: visible;
+
+  /* ▼ここを「5px」から「1px」に変更！ */
+  border: 1px solid #fff;
+  box-sizing: border-box; /* 枠線をサイズに含める（レイアウト崩れ防止） */
+}
+
+/* 内側のぼかし（オーバーレイ）の設定 */
+.bg_image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72rem;
+
+  /* ▼修正2：ここは「影（ぼかし）」だけにする */
+  /* 数字を調整して「淡さ」を決める（0px 0px 50px 20px くらいが程よい） */
+  box-shadow: inset 0px 0px 50px 20px #fff;
+
+  z-index: 10;
+  pointer-events: none;
+}
+
+.slide {
+  width: 100%;
+  height: 72rem;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide1 {
+  animation: slideshow 15s infinite;
+  background-image: url("../img/mainvisual1.jpg");
+  background-size: cover; /* 要素いっぱいに広げる */
+  background-position: center; /* 中央基準で表示 */
+  animation-delay: 0s;
+}
+
+.slide2 {
+  animation: slideshow 15s infinite;
+  background-image: url("../img/mainvisual2.jpg");
+  background-size: cover; /* 要素いっぱいに広げる */
+  background-position: center; /* 中央基準で表示 */
+  animation-delay: 5s;
+}
+
+.slide3 {
+  animation: slideshow 15s infinite;
+  background-image: url("../img/mainvisual3.jpg");
+  background-size: cover; /* 要素いっぱいに広げる */
+  background-position: center; /* 中央基準で表示 */
+  animation-delay: 10s;
+}
+
+@keyframes slideshow {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 1;
+  }
+  38% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 「話して学ぼう!」画像から左に文字コンテンツ */
+.slide_content {
+  position: absolute;
+  bottom: 15rem;
+  left: -20rem;
+  color: rgb(15, 15, 15);
+  display: flex;
+  flex-direction: column;
+  gap: 3.3rem;
+  justify-content: flex-start;
+  z-index: 15; /* ぼかしの下に配置 */
+}
+
+.slide_title {
+  font-size: 4.6rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-shadow: 0 4px 6px #fff;
+}
+
+.slide_btn {
+  display: block;
+  height: 6.1rem;
+  border-radius: 1rem;
+  text-align: center;
+  font-size: 2.4rem;
+  line-height: 6.1rem;
+
+  color: white;
+  background-color: #ff2a2a;
+  border-bottom: 6px solid #9a0413;
+
+  z-index: 15; /* ぼかしの下に配置 */
 }
