@@ -35,3 +35,22 @@ cards.forEach((card) => observer.observe(card));
 
 // 2周目：カード2に監視カメラを設置
 // observer.observe(カード2); // 「このカード2を監視してね」
+
+// 音声吹き出し部分のアニメーション
+const voiceSection = document.querySelector(".voice_bg");
+
+const voiceObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      // 全ての.voice_cardを取得してクラスを追加
+      const voiceCards = entry.target.querySelectorAll(".voice_card");
+      voiceCards.forEach((card) => {
+        card.classList.add("is-visible");
+      });
+      voiceObserver.unobserve(entry.target); // ★1回だけ
+    }
+  });
+});
+
+//は、**「指定した要素（voiceSection）の監視をスタートしてね」**という命令です。
+voiceObserver.observe(voiceSection);

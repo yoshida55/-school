@@ -23,15 +23,10 @@ body {
 
 /* header共通クラス ⇀ロゴとハンバーガーメニュー*/
 #header_area {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  z-index: 100;
-  background-color: transparent; /* 画像の上に透過 */
 }
 
-/* 画面聞切り替え（ハンバーガーメニュー）時  背景赤いページ  */
+/* 画面切り替え（ハンバーガーメニュー）時  背景赤いページ  */
 .nav_red {
   position: fixed;
   top: 0;
@@ -54,7 +49,7 @@ body {
   margin: 1.5rem 0 0 2rem;
 }
 
-/* 画面聞切り替え（ハンバーガーメニュー）時  背景赤いページ 表示 */
+/* 画面切り替え（ハンバーガーメニュー）時  背景赤いページ 表示 */
 .nav_red.open {
   opacity: 1;
   visibility: visible;
@@ -150,7 +145,7 @@ body {
 .bg_image {
   width: calc(100% - 36rem);
   height: 72rem;
-  margin: 11.5rem 0rem 36rem 36rem;
+  margin: 11.5rem 0rem 36rem 0rem;
   position: relative;
   overflow: visible;
 
@@ -289,12 +284,9 @@ body {
   width: 100%;
   background-color: #ff2a2a;
   margin-top: 8rem;
-}
-
-.reason_item_top {
-  width: 100%;
   margin-bottom: 3rem;
   padding-top: 12rem;
+  overflow: hidden;
 }
 
 .reason_item_bottom {
@@ -353,4 +345,151 @@ body {
   transform: translateX(0);
   /* アニメーションの時間や動き方 */
   transition: all 0.5s ease-out;
+}
+
+/* ┌─────────────────────────────────────────┐
+   │ 受講生の声 白い背景 フレックスで３人分の吹き出し                   │
+   └─────────────────────────────────────────┘ */
+
+.margin_space {
+  margin-top: 15rem;
+}
+
+/* 背景・フレックスで３人分の吹き出し  */
+.voice_bg {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 12rem 20rem 0;
+
+  display: flex;
+
+  flex-direction: column;
+  gap: 10.3rem;
+  margin-bottom: 20rem;
+}
+
+.voice_card {
+  display: flex;
+  justify-content: flex-start;
+  gap: 4.6rem;
+  opacity: 0; /* JSで表示するまで隠す */
+}
+
+.voice_text {
+  width: 46.8rem;
+  line-height: 2.7rem;
+  color: #333333;
+  background-color: #e9f1fb; /* 吹き出しの色 */
+  padding: 2rem;
+  font-size: 1.6rem;
+  border-radius: 1.5rem;
+  position: relative;
+}
+
+/* 吹き出しの三角形（左側） */
+.voice_text::before {
+  content: "";
+  position: absolute;
+  bottom: 2rem;
+  left: -1.8rem;
+  width: 0;
+  height: 0;
+  border-top: 2rem solid transparent;
+  border-bottom: 2rem solid transparent;
+  border-right: 2rem solid #e9f1fb;
+}
+
+.img_voice {
+  display: block;
+  width: 12rem;
+  height: 12rem;
+  object-fit: cover;
+  border-radius: 50%;
+  flex-shrink: 0; /* フレックスアイテムが縮小しないようにする */
+  background-color: #ddd; /* 白シルエット用の背景 */
+}
+
+.right_speech {
+  flex-direction: row-reverse;
+}
+
+/* 右寄せの吹き出し：三角形の位置と向きを上書き */
+.right_speech .voice_text::before {
+  /* 位置を左から右へ */
+  left: auto;
+  right: -1.5rem;
+
+  /* 三角形の向きを右向きにする */
+  border-right: none; /* 右向きの三角形を消す */
+  border-left: 1.5rem solid #e9f1fb;
+}
+
+/* 画面内に入った時 */
+.voice_card.is-visible {
+  animation: balloon 0.5s ease-out forwards;
+}
+
+/* 背景から突然現れるDOMが出力されるアニメーション */
+@keyframes balloon {
+  0% {
+    transform: scale(0.1); /* ★最初は小さく */
+    opacity: 0; /* ★透明 */
+  }
+  100% {
+    transform: scale(1); /* ★元のサイズに */
+    opacity: 1; /* ★表示 */
+  }
+}
+
+/* ┌─────────────────────────────────────────┐
+   │ スクールの概要　中心に四枚のcard　背景　赤い水玉│
+   └─────────────────────────────────────────┘ */
+#school_overview {
+  padding: 5rem 0;
+  /* 赤い水玉背景（radial-gradientで作る） */
+  background-image: url("../img/bg.gif");
+  background-size: cover; /* 要素いっぱいに広げる */
+  background-position: center; /* 中央基準で表示 */
+}
+
+.margin_space_school {
+  margin-bottom: 10rem;
+  border: 0.5rem solid red;
+}
+
+/* 水玉背景の親要素 */
+.overview_bg {
+  display: flex;
+  flex-wrap: wrap; /* 4枚を折り返す */
+  justify-content: center;
+  gap: 3rem;
+  width: 100%;
+}
+
+/* 4枚のカード */
+.overview_card {
+  background-color: #ffffff;
+  width: calc(45% - 1.5rem); /* 2カラム想定 */
+  padding: 4rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.overview_title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.overview_title_en {
+  font-size: 1.4rem;
+  color: #ff2a2a;
+  margin-bottom: 2rem;
+  font-weight: normal;
+}
+
+.overview_text {
+  font-size: 1.6rem;
+  line-height: 1.8;
+  text-align: left;
 }
