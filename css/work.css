@@ -607,7 +607,7 @@ body {
     width: 100%;
     padding-left: 0rem;
     height: 60rem;
-    margin: bottom: 10rem ;
+    margin: bottom 10rem;
   }
   /* 外枠（コンテナ）の設定 */
   .bg_image {
@@ -637,7 +637,6 @@ body {
     z-index: 10;
     pointer-events: none;
   }
-  
 
   .slide {
     width: 100%;
@@ -719,100 +718,100 @@ body {
     z-index: 15; /* ぼかしの下に配置 */
   }
 
-  
-/* ┌─────────────────────────────────────────┐
+  /* ┌─────────────────────────────────────────┐
    │ セクション　 BBBが選ばれる理由　　          │
    └─────────────────────────────────────────┘ */
-/* BBBが選ばれる理由 */
-#reason_h2 {
-  text-align: center;
-  margin-bottom: 4rem;
-  font-size: 3.6rem;
-  font-weight: bold;
-  position: relative;
-}
+  /* BBBが選ばれる理由 */
+  #reason_h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 3.6rem;
+    font-weight: bold;
+    position: relative;
+  }
 
-/* BBBが選ばれる理由の下線装飾 */
-#reason_h2::after {
-  content: "";
-  width: 30%;
-  margin: 0 auto;
-  border: 0.3rem solid black;
-  position: absolute;
-  bottom: -1.8rem;
-  left: 50%;
-  transform: translateX(-50%);
-}
+  /* BBBが選ばれる理由の下線装飾 */
+  #reason_h2::after {
+    content: "";
+    width: 30%;
+    margin: 0 auto;
+    border: 0.3rem solid black;
+    position: absolute;
+    bottom: -1.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
-.reason_bg {
-  height: 35.8rem;
-  width: 100%;
-  background-color: #ff2a2a;
-  margin-top: 8rem;
-  margin-bottom: 3rem;
-  padding-top: 3rem;
-  overflow: hidden;
-  border: 0.5rem solid red;
-}
+  .reason_bg {
+    height: 35.8rem;
+    width: 100%;
+    background-color: #ff2a2a;
+    margin-top: 8rem;
+    margin-bottom: 3rem;
+    padding-top: 3rem;
+    overflow: hidden;
+    border: 0.5rem solid red;
+  }
 
-.reason_item_bottom {
-  width: 100%;
-  padding-bottom: 3rem;
-  background-color: #ff2a2a;
-}
+  .reason_item_bottom {
+    width: 100%;
+    padding-bottom: 3rem;
+    background-color: #ff2a2a;
+  }
 
-/* ★ここを追加（カードそのものの見た目） */
+  /* ★ここを追加（カードそのものの見た目） */
 
-.reason_card {
-  display: flex; /* 画像とテキストを横並びにする */
-  height: 8rem;
-  align-items: center; /* 上下中央揃え */
-  justify-content: flex-start; /* ★centerからflex-startに変更 */
-  background: #fff; /* 背景を白くする */
-  padding: 3rem 3rem 3rem 0rem; /* ★左側のパディングを少し増やして位置を調整 */
-  width: 50%; /* カードの幅 */
-  opacity: 0; /* JSで表示するまで隠す */
-  transition: all 0.5s ease-out;
-  border: 0.5rem solid orange
-}
+  .reason_card {
+    display: flex; /* 画像とテキストを横並びにする */
+    height: 8rem;
+    align-items: center; /* 上下中央揃え */
+    justify-content: flex-start; /* ★centerからflex-startに変更 */
+    background: #fff; /* 背景を白くする */
+    padding: 3rem 3rem 3rem 0rem; /* ★左側のパディングを少し増やして位置を調整 */
+    width: 90%; /* カードの幅 */
+    opacity: 0; /* JSで表示するまで隠す */
+    transition: all 0.5s ease-out;
+    border: 0.5rem solid orange;
+  }
 
-/* ...existing code... */
-.img_pc,
-.img_teacher {
-  display: block;
-  width: 5.7rem;
-  height: 6rem;
-  margin-right: 2rem;
-  object-fit: contain;
-}
+  /* ...existing code... */
+  .img_pc,
+  .img_teacher {
+    display: block;
+    width: 5.7rem;
+    height: 6rem;
+    margin-right: 2rem;
+    object-fit: contain;
+  }
 
-.reason_card strong {
-  display: block;
-  color: #ff2a2a;
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-}
+  .reason_card strong {
+    display: block;
+    color: #ff2a2a;
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
 
-.reason_card--left {
-  border-radius: 0 2rem 2rem 0;
-  margin-bottom: 3rem;
-  transform: translateX(-100%); /* ★左に隠す */
-}
+  .reason_card--left {
+    border-radius: 0 2rem 2rem 0;
+    margin-bottom: 3rem;
+    transform: translateX(-100%); /* ★左に隠す */
+  }
 
-.reason_card--right {
-  border-radius: 2rem 0 0 2rem;
-  margin-left: auto;
-  transform: translateX(100%); /* ★右に隠す */
-}
+  .reason_card--right {
+    border-radius: 2rem 0 0 2rem;
+    margin-left: auto;
+    transform: translateX(100%); /* ★右に隠す */
+  }
 
-/* ★画面内に入った時のアニメーション */
-.reason_card.is-visible {
-  opacity: 1;
-  /* 元の位置に戻る */
-  transform: translateX(0);
-  /* アニメーションの時間や動き方 */
-  transition: all 0.5s ease-out;
-}
+  /* ★画面内に入った時のアニメーション */
+  .reason_card.is-visible {
+    opacity: 1;
+    /* 元の位置に戻る */
+    transform: translateX(0);
+    /* アニメーションの時間や動き方 */
+    transition: all 0.5s ease-out;
+  }
 
   /* ┌─────────────────────────────────────────┐
    │ まずは無料で、BBBの英会話を試してみませんか？　最後のCTA(行動喚起)ボタン    │
