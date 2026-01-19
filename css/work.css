@@ -13,9 +13,6 @@ body {
   /* ▼ ここで「var(--sidebar-width)」を一括管理！ */
   --sidebar-width: 36rem;
 }
-.aa {
-  left: var(--sidebar-width);
-}
 
 /* ┌─────────────────────────────────────────┐
    │ header      画面の切り替え後の赤い画面     │
@@ -56,7 +53,7 @@ body {
   background-color: #ff0000;
 }
 
-/* 画面聞切り替え（ハンバーガーメニューによって）時　ロゴ */
+/* 画面切り替え（ハンバーガーメニューによって）時　ロゴ */
 .logo_red {
   margin-top: 4rem;
   margin-left: 5rem;
@@ -67,12 +64,10 @@ body {
 .nav_links {
   display: block;
   color: #ffffff;
-  font-size: 1.6rem;
   text-decoration: none;
   font-weight: bold;
   margin-bottom: 3rem;
   text-align: center;
-  color: white;
   font-size: 3rem;
 }
 
@@ -154,7 +149,7 @@ body {
   overflow: visible;
 
   /* ▼ここを「5px」から「1px」に変更！ */
-  border: 1px solid #fff;
+  border: 1rem solid #fff;
   box-sizing: border-box; /* 枠線をサイズに含める（レイアウト崩れ防止） */
 }
 
@@ -181,13 +176,13 @@ body {
   position: absolute;
   opacity: 0;
   transition: opacity 1s ease-in-out;
+  background-size: cover; /* 要素いっぱいに広げる */
+  background-position: center; /* 中央基準で表示 */
 }
 
 .slide1 {
   animation: slideshow 15s infinite;
   background-image: url("../img/mainvisual1.jpg");
-  background-size: cover; /* 要素いっぱいに広げる */
-  background-position: center; /* 中央基準で表示 */
   animation-delay: 0s;
 }
 
