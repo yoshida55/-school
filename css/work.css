@@ -307,7 +307,6 @@ body {
   width: 50%; /* カードの幅 */
   opacity: 0; /* JSで表示するまで隠す */
   transition: all 0.5s ease-out;
-  border: 0.5rem solid rgb(30, 0, 255);
 }
 
 /* ...existing code... */
@@ -592,17 +591,54 @@ body {
     position: fixed;
     top: 0rem;
     right: 0rem;
-    width: 10rem;
-    height: 10rem;
+    width: 7.5rem;
+    height: 7.5rem;
     cursor: pointer;
     z-index: 1000;
     background-color: #ff2a2a;
+  }
+
+  .bar {
+    position: absolute;
+    transition: 0.3s;
+    left: 1rem;
+    height: 0.4rem;
+    width: 6rem;
+    background: white;
+  }
+
+  .bar:nth-child(1) {
+    top: 1.8rem;
+  }
+  .bar:nth-child(2) {
+    top: 4rem;
+  }
+  .bar:nth-child(3) {
+    top: 6.2rem;
+  }
+
+  /* ┌─────────────────────────────────────────┐
+   │ ハンバーガーメニュークリック時の動作       │
+   └─────────────────────────────────────────┘ */
+
+  /* ハンバーガーメニューがおされたら、「×」にする */
+  .hamburger_menu.open .bar:nth-child(1) {
+    transform: rotate(45deg);
+    top: 4.7rem;
+  }
+  .hamburger_menu.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger_menu.open .bar:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 4.7rem;
   }
 
   /* ┌─────────────────────────────────────────┐
    │ main      メインビジュアル スライドショー    │
    └─────────────────────────────────────────┘ */
 
+  /* メインビジュアル全体の余白調整 */
   .main_visual {
     width: 100%;
     padding-left: 0rem;
@@ -638,6 +674,7 @@ body {
     pointer-events: none;
   }
 
+  /* スライド画像の高さと透明度設定 */
   .slide {
     width: 100%;
     height: 30rem;
@@ -648,12 +685,14 @@ body {
     background-position: center; /* 中央基準で表示 */
   }
 
+  /* 1枚目のスライド設定 */
   .slide1 {
     animation: slideshow 15s infinite;
     background-image: url("../img/mainvisual1.jpg");
     animation-delay: 0s;
   }
 
+  /* 2枚目のスライド設定 */
   .slide2 {
     animation: slideshow 15s infinite;
     background-image: url("../img/mainvisual2.jpg");
@@ -662,6 +701,7 @@ body {
     animation-delay: 5s;
   }
 
+  /* 3枚目のスライド設定 */
   .slide3 {
     animation: slideshow 15s infinite;
     background-image: url("../img/mainvisual3.jpg");
@@ -670,7 +710,7 @@ body {
     animation-delay: 10s;
   }
 
-  /* 背景（スライドショー） */
+  /* スライド画像コンテナの高さ調整 */
   .bg_image {
     width: 100%;
     height: 30rem;
@@ -697,11 +737,14 @@ body {
     z-index: 15; /* ぼかしの下に配置 */
   }
 
+  /* スライドショーのタイトル文字調整 */
   .slide_title {
     font-size: 2.8rem;
     font-weight: bold;
     text-shadow: 0 4px 6px #fff;
   }
+
+  /* 無料体験ボタンの幅と位置調整 */
   .slide_btn {
     display: block;
     width: 100%;
@@ -730,7 +773,7 @@ body {
     position: relative;
   }
 
-  /* BBBが選ばれる理由の下線装飾 */
+  /* BBBが選ばれる理由のタイトルの　下線　*/
   #reason_h2::after {
     content: "";
     width: 30%;
@@ -742,6 +785,7 @@ body {
     transform: translateX(-50%);
   }
 
+  /* 理由セクションの背景エリア設定 */
   .reason_bg {
     height: 35.8rem;
     width: 100%;
@@ -750,9 +794,9 @@ body {
     margin-bottom: 3rem;
     padding-top: 3rem;
     overflow: hidden;
-    border: 0.5rem solid red;
   }
 
+  /* 理由セクションの下部スペース */
   .reason_item_bottom {
     width: 100%;
     padding-bottom: 3rem;
@@ -761,6 +805,7 @@ body {
 
   /* ★ここを追加（カードそのものの見た目） */
 
+  /* 理由カードのレイアウトと初期スタイル */
   .reason_card {
     display: flex; /* 画像とテキストを横並びにする */
     height: 8rem;
@@ -771,10 +816,10 @@ body {
     width: 90%; /* カードの幅 */
     opacity: 0; /* JSで表示するまで隠す */
     transition: all 0.5s ease-out;
-    border: 0.5rem solid orange;
   }
 
   /* ...existing code... */
+  /* 理由カード内のアイコン画像調整 */
   .img_pc,
   .img_teacher {
     display: block;
@@ -784,6 +829,7 @@ body {
     object-fit: contain;
   }
 
+  /* 理由カード内の強調テキストスタイル */
   .reason_card strong {
     display: block;
     color: #ff2a2a;
@@ -792,12 +838,14 @@ body {
     margin-bottom: 0.5rem;
   }
 
+  /* 左側の理由カードの初期位置 */
   .reason_card--left {
     border-radius: 0 2rem 2rem 0;
     margin-bottom: 3rem;
     transform: translateX(-100%); /* ★左に隠す */
   }
 
+  /* 右側の理由カードの初期位置 */
   .reason_card--right {
     border-radius: 2rem 0 0 2rem;
     margin-left: auto;
@@ -814,19 +862,128 @@ body {
   }
 
   /* ┌─────────────────────────────────────────┐
+   │ 受講生の声 白い背景 フレックスで３人分の吹き出し                   │
+   └─────────────────────────────────────────┘ */
+
+  /* セクション間の上部余白を設定 */
+  .margin_space {
+    width: 100%;
+    margin-top: 15rem;
+  }
+
+  /* 背景・フレックスで３人分の吹き出し  */
+  .voice_bg {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 5rem 1.6rem 0;
+
+    display: flex;
+
+    flex-direction: column;
+    gap: 10.3rem;
+    margin-bottom: 15rem;
+  }
+
+  /* 声カードを縦並びに変更 */
+  .voice_card {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 3.1rem;
+    opacity: 0; /* JSで表示するまで隠す */
+  }
+
+  /* 吹き出しテキストのデザイン調整 */
+  .voice_text {
+    width: 100%;
+    line-height: 2.7rem;
+    color: #333333;
+    background-color: #e9f1fb; /* 吹き出しの色 */
+    padding: 2rem;
+    font-size: 1.6rem;
+    border-radius: 1.5rem;
+    position: relative;
+  }
+
+  /* ┌─────────────────────────────────────────┐
+   │ スクールの概要　中心に四枚のcard　背景　赤い水玉│
+   └─────────────────────────────────────────┘ */
+  #school_overview {
+    width: 100%;
+    padding: 5rem 0 10rem 0;
+    /* 赤い水玉背景（radial-gradientで作る） */
+    background-image: url("../img/bg.gif");
+    background-size: 60rem 60rem; /* ✅ 固定サイズ */
+    background-repeat: repeat; /* ✅ 繰り返し */
+
+    margin-bottom: 10rem;
+  }
+
+  .margin_space_school {
+    margin-bottom: 0rem;
+  }
+
+  /* 水玉背景の親要素 */
+  .overview_bg {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6rem;
+    width: 100%;
+
+    padding: 5rem 1.6rem 0;
+  }
+
+  /* 4枚のカード */
+  .overview_card {
+    background-color: #ffffff;
+    width: calc(100% - 1.6rem); /* 2カラム想定 */
+    padding: 4rem;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 2rem;
+  }
+
+  .overview_title {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .overview_title_en {
+    font-size: 1.4rem;
+    color: #ff2a2a;
+    margin-bottom: 2rem;
+    font-weight: normal;
+  }
+
+  .overview_text {
+    font-size: 1.6rem;
+    line-height: 1.8;
+    text-align: left;
+  }
+
+  /* ┌─────────────────────────────────────────┐
    │ まずは無料で、BBBの英会話を試してみませんか？　最後のCTA(行動喚起)ボタン    │
    └─────────────────────────────────────────┘ */
+  /* CTAエリア全体の余白設定 */
   #cta_area {
     width: 100%;
-    padding: 10rem 1.6rem;
+    padding: 10rem 0rem;
   }
+
+  /* CTAコンテンツエリアの高さ設定 */
   .cta_bg {
     width: 100%;
     background-color: #ffffff;
     height: 38.2rem;
-    margin: 0 1.6rem; /* 確認 */
+    margin: 0 auto; /* 確認 */
   }
 
+  /* 無料体験ボタンのデザイン調整 */
   .cta_button {
     display: block;
     width: 100%;
@@ -842,56 +999,16 @@ body {
   }
 
   /* ┌─────────────────────────────────────────┐
-   │ 受講生の声 白い背景 フレックスで３人分の吹き出し                   │
-   └─────────────────────────────────────────┘ */
-
-  .margin_space {
-    width: 100%;
-    margin-top: 15rem;
-  }
-
-  .voice_card {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 3.1rem;
-    opacity: 0; /* JSで表示するまで隠す */
-  }
-
-  /* 背景・フレックスで３人分の吹き出し  */
-  .voice_bg {
-    width: 100%;
-    background-color: #ffffff;
-    padding: 12rem 1.6rem 0;
-
-    display: flex;
-
-    flex-direction: column;
-    gap: 10.3rem;
-    margin-bottom: 20rem;
-  }
-
-  .voice_text {
-    width: 100%;
-    line-height: 2.7rem;
-    color: #333333;
-    background-color: #e9f1fb; /* 吹き出しの色 */
-    padding: 2rem;
-    font-size: 1.6rem;
-    border-radius: 1.5rem;
-    position: relative;
-  }
-
-  /* ┌─────────────────────────────────────────┐
    │ フッター　　　　　                        │
    └─────────────────────────────────────────┘ */
 
+  /* フッター全体の背景と高さ設定 */
   #footer_area {
     width: 100%;
     background-color: #e8e8e8;
     color: #333333;
     padding: 0 4rem;
-    height: 45rem;
+    height: auto;
   }
 
   /* 4列に分けるflexbox */
@@ -899,16 +1016,18 @@ body {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 3rem;
+    gap: 4rem 1rem;
     padding: 6.2rem 0;
   }
 
+  /* フッターリンク見出しのスタイル */
   .footer_link_title {
     font-size: 1.6rem;
     font-weight: bold;
     margin-bottom: 1.5rem;
   }
 
+  /* フッターリンク項目のスタイル */
   .footer_text {
     color: #000;
     font-size: 1.6rem;
@@ -916,6 +1035,7 @@ body {
     margin-bottom: 0.8rem;
   }
 
+  /* コピーライト表記のスタイル */
   .copyright {
     text-align: center;
     font-size: 1.4rem;
