@@ -3,9 +3,14 @@ Theme Name:
 */
 
 html {
-  font-size: calc(10 / 1400 * 100vw);
+  /* font-size: calc(10 / 1400 * 100vw); */
   /* 画面幅1400pxで10px*/
+
+  /* 暫定修正 */
+  font-size: clamp(8px, calc(10 / 1400 * 100vw), 10px);
+  /* 8px～10pxの範囲に制限 */
 }
+
 :root {
 }
 /* 
@@ -31,9 +36,13 @@ img {
 /* <!-- メインビジュアルここまで --> */
 @media screen and (max-width: 900px) {
   html {
-    font-size: calc(10 / 375 * 100vw);
+    /* font-size: calc(10 / 375 * 100vw); */
     /* 画面幅375pxで10px*/
+    /* 暫定修正 */
+    font-size: clamp(8px, calc(10 / 375 * 100vw), 10px);
+    /* 8px～10pxの範囲に制限 */
   }
+
   /* <!-- メインビジュアルここから --> */
   .ar_main_img {
     margin-top: 8rem;
